@@ -1,3 +1,10 @@
+% Length
+#const n = 10.
+
+% Scale tonic (we assume major)
+sDeg(1, d2).
+
+% Pitches
 cf(d2,0).
 cf(d2,1).
 cf(e2,2).

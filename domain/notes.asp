@@ -48,3 +48,13 @@ im14(X,Y) :- iM13(X,Z), im2(Z, Y), note(Z).
 % Augmented and diminished
 % iA7(X,Y) :- iM7(X,Z), im2(Z,Y), note(Z).
 % iD7(X,Y) :- im7(X,Z).
+
+% ---- HELPERS
+
+samenote(X,X) :- note(X).
+
+% X is above Y, if there exists some Z that X is above; and Y is above that Z.
+above(X,Y) :- note(X), note(Y), above(X, Z), above(Z, Y), note(Z).
+above(X,Y) :- im2(Y,X).
+
+below(X,Y) :- not samenote(X,Y), not above(X,Y), note(X), note(Y).
