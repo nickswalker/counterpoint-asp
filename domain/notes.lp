@@ -6,7 +6,7 @@ note(c1; cs1; d1; ds1; e1; f1; fs1; g1; gs1; a1; as1; b1;).
 note(c2; cs2; d2; ds2; e2; f2; fs2; g2; gs2; a2; as2; b2;).
 note(c3; cs3; d3; ds3; e3; f3; fs3; g3; gs3; a3; as3; b3;).
 note(c4; cs4; d4; ds4; e4; f4; fs4; g4; gs4; a4; as4; b4;).
-note(c5).
+note(c5; cs5; d5; ds5; e5; f5; fs5; g5; gs5; a5; as5; b5;).
 
 % ---- INTERVALS
 
@@ -16,6 +16,7 @@ im2(c1,cs1; cs1,d1; d1,ds1; ds1,e1; e1,f1; f1,fs1; fs1,g1; g1,gs1; gs1,a1; a1,as
 im2(c2,cs2; cs2,d2; d2,ds2; ds2,e2; e2,f2; f2,fs2; fs2,g2; g2,gs2; gs2,a2; a2,as2; as2,b2; b2,c3).
 im2(c3,cs3; cs3,d3; d3,ds3; ds3,e3; e3,f3; f3,fs3; fs3,g3; g3,gs3; gs3,a3; a3,as3; as3,b3; b3,c4).
 im2(c4,cs4; cs4,d4; d4,ds4; ds4,e4; e4,f4; f4,fs4; fs4,g4; g4,gs4; gs4,a4; a4,as4; as4,b4; b4,c5).
+im2(c5,cs5; cs5,d5; d5,ds5; ds5,e5; e5,f5; f5,fs5; fs5,g5; g5,gs5; gs5,a5; a5,as5; as5,b5; b5,c6).
 
 % Major and perfect.
 iM2(X,Y) :- im2(X,Z), im2(Z,Y), note(Z).

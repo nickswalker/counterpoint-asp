@@ -1,5 +1,3 @@
-#include "../error-strings.asp".
-
 % ---- SCALES
 
 % Major
@@ -21,4 +19,4 @@ sDeg(8,Y) :- note(Y), sDeg(8,X), iP8(X,Y).
 
 error(e_no_first_scale_degree, -1) :- not 1{sDeg(1, X): note(X)}1.
 
-inScale(X) :- sDeg(1,X), note(X).
+inScale(X) :- sDeg(1..8,X), note(X).
