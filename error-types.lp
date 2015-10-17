@@ -12,6 +12,12 @@ reason(e_excessive_range).
 #const e_improper_cadence = "Improper cadence".
 reason(e_improper_cadence).
 
+#const e_too_many_leaps = "Too many leaps".
+reason(e_too_many_leaps).
+
+#const e_unresolved_seven = "Unresolved leading tone".
+reason(e_unresolved_seven).
+
 #const e_improper_harmonic_im2 = "Improper harmonic minor second".
 reason(e_improper_harmonic_im2).
 #const e_improper_harmonic_iM2 = "Improper harmonic major second".

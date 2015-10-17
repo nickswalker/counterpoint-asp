@@ -10,13 +10,13 @@ sDeg(1, d1).
 
 % Pitches
 cf(d4,0).
-cf(c4,1).
+cf(cis4,1).
 cf(b3,2).
 cf(a3,3).
-cf(f3,4).
+cf(fis3,4).
 cf(g3,5).
 cf(a3,6).
-cf(f3,7).
+cf(fis3,7).
 cf(g3,8).
 cf(e3,9).
 cf(d3,10).

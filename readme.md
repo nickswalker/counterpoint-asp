@@ -4,10 +4,10 @@ A rudimentary implementation of [first species counterpoint](https://en.wikipedi
 
 ## Usage
 
-Enter the cantus firmus in `cantus-firmus.asp` and ensure that the pitches exist in the domain. To generate all melodies:
+Enter the cantus firmus in `cantus-firmus.asp`. To generate all melodies:
 
-    clingo 0 domain.asp cantus-firmus.asp species-one.asp
+    clingo 0 compose.lp cantus-firmus.lp species-one.lp
 
 To generate a melody:
 
-    clingo 1 domain.asp cantus-firmus.asp species-one.asp
+    clingo 1 compose.lp cantus-firmus.lp species-one.lp

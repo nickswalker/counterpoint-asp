@@ -2,21 +2,21 @@
 
 % Each line defines all the semitones between a C and its major 7th, B.
 % Semitones above a diatonic pitch contain an 's'.
-note(c1; cs1; d1; ds1; e1; f1; fs1; g1; gs1; a1; as1; b1;).
-note(c2; cs2; d2; ds2; e2; f2; fs2; g2; gs2; a2; as2; b2;).
-note(c3; cs3; d3; ds3; e3; f3; fs3; g3; gs3; a3; as3; b3;).
-note(c4; cs4; d4; ds4; e4; f4; fs4; g4; gs4; a4; as4; b4;).
-note(c5; cs5; d5; ds5; e5; f5; fs5; g5; gs5; a5; as5; b5;).
+note(c1; cis1; d1; dis1; e1; f1; fis1; g1; gis1; a1; ais1; b1;).
+note(c2; cis2; d2; dis2; e2; f2; fis2; g2; gis2; a2; ais2; b2;).
+note(c3; cis3; d3; dis3; e3; f3; fis3; g3; gis3; a3; ais3; b3;).
+note(c4; cis4; d4; dis4; e4; f4; fis4; g4; gis4; a4; ais4; b4;).
+note(c5; cis5; d5; dis5; e5; f5; fis5; g5; gis5; a5; ais5; b5;).
 
 % ---- INTERVALS
 
 % The minor second is the smallest step. Each line defines a C chromatic scale.
 % First pitch is the root.
-im2(c1,cs1; cs1,d1; d1,ds1; ds1,e1; e1,f1; f1,fs1; fs1,g1; g1,gs1; gs1,a1; a1,as1; as1,b1; b1,c2).
-im2(c2,cs2; cs2,d2; d2,ds2; ds2,e2; e2,f2; f2,fs2; fs2,g2; g2,gs2; gs2,a2; a2,as2; as2,b2; b2,c3).
-im2(c3,cs3; cs3,d3; d3,ds3; ds3,e3; e3,f3; f3,fs3; fs3,g3; g3,gs3; gs3,a3; a3,as3; as3,b3; b3,c4).
-im2(c4,cs4; cs4,d4; d4,ds4; ds4,e4; e4,f4; f4,fs4; fs4,g4; g4,gs4; gs4,a4; a4,as4; as4,b4; b4,c5).
-im2(c5,cs5; cs5,d5; d5,ds5; ds5,e5; e5,f5; f5,fs5; fs5,g5; g5,gs5; gs5,a5; a5,as5; as5,b5; b5,c6).
+im2(c1,cis1; cis1,d1; d1,dis1; dis1,e1; e1,f1; f1,fis1; fis1,g1; g1,gis1; gis1,a1; a1,ais1; ais1,b1; b1,c2).
+im2(c2,cis2; cis2,d2; d2,dis2; dis2,e2; e2,f2; f2,fis2; fis2,g2; g2,gis2; gis2,a2; a2,ais2; ais2,b2; b2,c3).
+im2(c3,cis3; cis3,d3; d3,dis3; dis3,e3; e3,f3; f3,fis3; fis3,g3; g3,gis3; gis3,a3; a3,ais3; ais3,b3; b3,c4).
+im2(c4,cis4; cis4,d4; d4,dis4; dis4,e4; e4,f4; f4,fis4; fis4,g4; g4,gis4; gis4,a4; a4,ais4; ais4,b4; b4,c5).
+im2(c5,cis5; cis5,d5; d5,dis5; dis5,e5; e5,f5; f5,fis5; fis5,g5; g5,gis5; gis5,a5; a5,ais5; ais5,b5; b5,c6).
 
 % Major and perfect.
 iM2(X,Y) :- im2(X,Z), im2(Z,Y), note(Z).
@@ -51,6 +51,11 @@ im14(X,Y) :- iM13(X,Z), im2(Z, Y), note(Z).
 % iD7(X,Y) :- im7(X,Z).
 
 % ---- HELPERS
+
+i3(X,Y) :- im3(X,Y).
+i3(X,Y) :- iM3(X,Y).
+i6(X,Y) :- im6(X,Y).
+i6(X,Y) :- iM6(X,Y).
 
 samenote(X,X) :- note(X).
 
