@@ -18,6 +18,10 @@ error(e_improper_harmonic_im7, I) :- cv(Y,I), cf(X,I), im7(X,Y), I=0..n.
 
 % No leaps more than a sixth
 
+highest(I) :- 0 == #count{Y: note(X), note(Y), cv(Y,J), cv(X,I), below(X,Y), J=0..n}, I=0..n.
+lowest(I) :- 0 == #count{Y: note(X), note(Y), cv(Y,J), cv(X,I), above(X,Y), J=0..n}, I=0..n.
+
+error(e_excessive_range, -1) :- lowest(A), highest(B), cv(X,A), cv(Y,B), iM10(X,Z), above(Y,Z).
 % CV must be above CF
 error(e_voice_crossing, I) :- cv(X,I), cf(Y,I), above(Y,X), I=0..n.
 
@@ -25,8 +29,10 @@ error(e_voice_crossing, I) :- cv(X,I), cf(Y,I), above(Y,X), I=0..n.
 error(e_excessive_range, I) :- cv(X,I), cf(Y,I), iM13(Y,Z), above(X,Z), I=0..n.
 
 
+
+% ---- USAGE ERRORS
+error(e_cf_not_in_scale, I) :- cf(X,I), not inScale(X), I=0..n.
+error(e_cv_not_in_scale, I) :- cv(X,I), not inScale(X), I=0..n.
+
 error(e_cf_out_of_domain, I) :- cf(X,I), not note(X), I=0..n.
 error(e_cv_out_of_domain, I) :- cv(X,I), not note(X), I=0..n.
-
-% Must have leading tones and a unison at the end
-error(e_improper_cadence, n) :- cv(X,n-1), cv(Y,n), cf(A, n-1), cf(B, n), not sDeg(7,X), not sDeg(8,Y).
