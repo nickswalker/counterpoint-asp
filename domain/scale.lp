@@ -35,8 +35,12 @@ direction(down).
 otherDir(up,down).
 otherDir(down,up).
 % There's a step if there are two notes in a voice which are adjacent scale degrees.
-step(I,up) :- cv(X,I), cv(Y,I+1), sDeg(A,X), sDeg(B,Y), nDeg(A,B), I=0..n-1.
-step(I,down) :- cv(X,I), cv(Y,I+1), sDeg(A,X), sDeg(B,Y), pDeg(A,B), I=0..n-1.
+step(I,up) :- cv(X,I), cv(Y,I+1), sDeg(A,X), sDeg(B,Y), nDeg(A,B), below(X,Y), I=0..n-1.
+step(I,down) :- cv(X,I), cv(Y,I+1), sDeg(A,X), sDeg(B,Y), pDeg(A,B), above(X,Y), I=0..n-1.
 
-leap(I,up) :- cv(X,I), cv(Y,I+1), not step(I,down), below(X,Y), I=0..n-1.
-leap(I,down) :- cv(X,I), cv(Y,I+1), not step(I,up), above(X,Y), I=0..n-1.
+
+leap(I,up) :- cv(X,I), cv(Y,I+1), not step(I,up), below(X,Y), I=0..n-1.
+leap(I,down) :- cv(X,I), cv(Y,I+1), not step(I,down), above(X,Y), I=0..n-1.
+
+largeLeap(I,down) :- cv(X,I), cv(Y,I+1), iP4(Z,X), below(Y,Z), I=0..n-1.
+largeLeap(I,up) :- cv(X,I), cv(Y,I+1), iP4(X,Z), above(Y,Z), I=0..n-1.

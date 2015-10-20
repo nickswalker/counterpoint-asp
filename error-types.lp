@@ -18,16 +18,12 @@ reason(e_too_many_leaps).
 #const e_unresolved_seven = "Unresolved leading tone".
 reason(e_unresolved_seven).
 
-#const e_improper_harmonic_im2 = "Improper harmonic minor second".
-reason(e_improper_harmonic_im2).
-#const e_improper_harmonic_iM2 = "Improper harmonic major second".
-reason(e_improper_harmonic_iM2).
+#const e_improper_harmonic_i2 = "Improper harmonic second".
+reason(e_improper_harmonic_i2).
 #const e_improper_harmonic_iP4 = "Improper harmonic perfect fourth".
 reason(e_improper_harmonic_iP4).
-#const e_improper_harmonic_im7 = "Improper harmonic minor seventh".
-reason(e_improper_harmonic_im7).
-#const e_improper_harmonic_iM7 = "Improper harmonic major seventh".
-reason(e_improper_harmonic_iM7).
+#const e_improper_harmonic_i7 = "Improper harmonic seventh".
+reason(e_improper_harmonic_i7).
 
 % Usage assumptions
 #const e_no_first_scale_degree = "No first scale degree".

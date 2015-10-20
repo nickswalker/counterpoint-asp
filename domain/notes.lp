@@ -52,10 +52,14 @@ im14(X,Y) :- iM13(X,Z), im2(Z, Y), note(Z).
 
 % ---- HELPERS
 
+i2(X,Y) :- im2(X,Y).
+i2(X,Y) :- iM2(X,Y).
 i3(X,Y) :- im3(X,Y).
 i3(X,Y) :- iM3(X,Y).
 i6(X,Y) :- im6(X,Y).
 i6(X,Y) :- iM6(X,Y).
+i7(X,Y) :- im7(X,Y).
+i7(X,Y) :- iM7(X,Y).
 
 samenote(X,X) :- note(X).
 
@@ -63,4 +67,5 @@ samenote(X,X) :- note(X).
 above(X,Y) :- note(X), note(Y), above(X, Z), above(Z, Y), note(Z).
 above(X,Y) :- im2(Y,X).
 
+% X is below Y
 below(X,Y) :- not samenote(X,Y), not above(X,Y), note(X), note(Y).
