@@ -22,53 +22,47 @@ import shlex
 import subprocess
 from operator import itemgetter, attrgetter
 
-
+model_num = -1
 
 def output(solution):
+    global model_num
+    model_num += 1
     terms = solution.atoms()
-
-    cv_string, cf_string = convert_to_lilypond_format(terms)
+    cf_string = convert_voice_to_lilypond_format(terms, "cf")
+    cv_string = convert_voice_to_lilypond_format(terms, "cv")
     template = open("lilypond-template.ly").read()
     output = template.replace("<CV>",cv_string)
     output = output.replace("<CF>", cf_string)
-    f = open('out/lilypond.ly','w')
+    filename = "model_" + str(model_num) + ".ly"
+
+    f = open('out/' + filename,'w')
     f.write(output)
     f.close()
-    run_lilypond('out', 'lilypond.ly')
+    run_lilypond('out', filename)
 
-def convert_to_lilypond_format(terms):
+def convert_voice_to_lilypond_format(terms, voicename):
     current = 0
-    cv = []
-    cf = []
+    applicableterms = []
     for atom in terms:
-        if atom.name() == "cv":
-            cv.append(atom.args())
-        elif atom.name() == "cf":
-            cf.append(atom.args())
+        if atom.name() == voicename:
+            applicableterms.append(atom.args())
 
-    cv = sorted(cv, key=itemgetter(1))
-    cf = sorted(cf, key=itemgetter(1))
+    # Sort based on the time (second attribute of the fluent)
+    applicableterms = sorted(applicableterms, key=itemgetter(1))
 
-    cv_string = ""
-    cf_string = ""
+    string_version = ""
 
-    for i in range(0,len(cv)):
-        note = cv[i]
-        cv_string += " " + to_lilypond_note(str(note[0]))
+    for i in range(0,len(applicableterms)):
+        note = applicableterms[i]
+        string_version += " " + to_lilypond_note(str(note[0]))
+        # First note needs to have the half note duration appended to it
         if i == 0:
-            cv_string += str(2)
-        elif i == len(cv) -1 :
-            cv_string += str(1)
+            string_version += str(2)
+        # Last one is a whole note
+        elif i == len(applicableterms) -1 :
+            string_version += str(1)
 
-    for i in range(0,len(cv)):
-        note = cf[i]
-        cf_string += " " + to_lilypond_note(str(note[0]))
-        if i == 0:
-            cf_string += str(2)
-        elif i == len(cv) - 1:
-            cf_string += str(1)
-
-    return (cv_string, cf_string)
+    return string_version
 
 def run_lilypond(outpath, filename):
     savedPath = os.getcwd()
